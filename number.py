@@ -6,6 +6,13 @@ class BaseError(Exception):
     
     def __str__(self):
         return repr(self.value)
+    
+class NonBinaryError(Exception):
+    def __init__(self, base):
+        self.value = base
+        
+    def __str__(self):
+        return str(base)
 
 
 class Number:
@@ -16,14 +23,15 @@ class Number:
         self.number_string = number
         self.number_base = base
         
+        
     def __init__(self):
         self.number_string = ""
         self.number_base = 0
         
-    def __init__(self, number_string, number_base):
+    def __init__(self, number_string: str, number_base: int):
         self.insert_number(number_string, number_base)
         
-    def get_in_base(self, base):
+    def get_in_base(self, base: int):
         print("heheheh")
         
     def verify_number(self, number, base):
@@ -38,6 +46,10 @@ class Number:
         else:
             return int(ord(char) + 10 - ord("a"))
         
+        
+
+        
+    
     def __str__(self):
         return "({})_{}".format(self.number_string, str(self.number_base))
             
